@@ -12,11 +12,25 @@ $(document).ready(function(){
 
 function setupBoard(){
     var grid = $('#grid');
-    for (var i = 0; i < 18; i++){
-	var row = $('<tr row="' + i + '"></tr>').appendTo(grid)
-	for (var j = 0; j < 18; j++) {
-	    $('<td class="tile" row="' + i + '" col="' + j + '"></td>').appendTo(row)
-	}
+    w = grid.attr('width') - 2
+    h = grid.attr('height') - 2;
+    winc = w / 18;
+    hinc = h / 18;
+    for (var i = 0; i < 19; i++){
+	var row = document.createElementNS("http://www.w3.org/2000/svg", "line");
+	var col = document.createElementNS("http://www.w3.org/2000/svg", "line");
+	col.setAttribute("stroke", "black");
+	row.setAttribute("stroke", "black");
+	row.setAttribute("x1", 0);
+	row.setAttribute("x2", w);
+	row.setAttribute("y1", 1 + i*hinc);
+	row.setAttribute("y2", 1 + i*hinc);
+	col.setAttribute("x1", 1 + i*winc);
+	col.setAttribute("x2", 1 + i*winc);
+	col.setAttribute("y1", 0);
+	col.setAttribute("y2", h);
+	grid[0].appendChild(row);	
+	grid[0].appendChild(col);	
     }
 }
 
