@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title 5inarow: #{game}
+    link(rel='stylesheet', href='/s/style.css')
+    script(type='text/javascript', src='/socket.io/socket.io.js')
+    script(type='text/javascript', src='/s/zepto.min.js')
+    script(type='text/javascript', src='/s/play.js')
+  body
+    div(id='gamename' name=game)
+    if black
+      div(id='color' color='black')
+      h1(id='statusbar') you are black - your move
+    else
+      div(id='color' color='white')
+      h1(id='statusbar') you are white - black to move
+    div(id='board')
+      table(id='grid')

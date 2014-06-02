@@ -1,0 +1,28 @@
+h1{
+    text-align:center;
+}
+
+#board{
+    background-color: yellow;
+    width: 800px;
+    height: 800px;
+    padding:25px;
+    margin-left:auto;
+    margin-right:auto;
+    position:relative;
+    user-select:none;
+}
+
+#grid{
+    width:800px;
+    height:800px;
+    border-collapse: collapse;
+}
+
+.tile{
+    border:1px solid black;
+}
+
+.stone{
+    position:absolute;
+}
