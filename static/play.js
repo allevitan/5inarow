@@ -79,5 +79,5 @@ function makeStone(color){
     
 
 function makeO(){
-    return '<svg class="O" height="40" width="40"><circle cx="20" cy="20" r="8" stroke="red"></circle></svg>'
+    return '<svg class="O" height="40" width="40"><circle cx="20" cy="20" r="8" fill-opacity="0" stroke="red"></circle></svg>'
 }
