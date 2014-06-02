@@ -135,6 +135,7 @@ function gameWon(status){
     return false
 }
 
-http.listen(80, function(){
-    console.log('Server running on port 80')
+var port = Number(process.env.PORT || 8888);
+http.listen(port, function() {
+  console.log("Listening on " + port);
 });
