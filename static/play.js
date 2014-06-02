@@ -61,9 +61,12 @@ function setupResponse(){
 	    $('#statusbar').text('you are white - black to move');	    
 	}
 	var newStone = $(makeStone(msg.color));
+	$('.O').remove();
+	var newO = $(makeO());
 	x = msg.x * $('#grid').width() / 18 + 4;
 	y = msg.y * $('#grid').height() / 18 + 4;
 	newStone.css('top',y).css('left',x).appendTo('#board');
+	newO.css('top',y).css('left',x).appendTo('#board');
     });
     socket.on('win', function(who){
 	$('#statusbar').text(who + ' won!');
@@ -71,6 +74,10 @@ function setupResponse(){
 }
 
 function makeStone(color){
-    return '<svg class="stone" height="40" width="40"><circle cx="20" cy="20" r="15" stroke="black" fill="' + color + '"/></svg>'
+    return '<svg class="stone" height="40" width="40"><circle cx="20" cy="20" r="15" stroke="black" fill="' + color + '"></circle></svg>'
 }
     
+
+function makeO(){
+    return '<svg class="O" height="40" width="40"><circle cx="20" cy="20" r="8" stroke="red"></circle></svg>'
+}
