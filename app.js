@@ -135,6 +135,6 @@ function gameWon(status){
     return false
 }
 
-http.listen(8888, function(){
-    console.log('Server running on port 8888')
+http.listen(80, function(){
+    console.log('Server running on port 80')
 });
