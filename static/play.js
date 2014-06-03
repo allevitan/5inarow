@@ -32,6 +32,17 @@ function setupBoard(){
 	grid[0].appendChild(row);	
 	grid[0].appendChild(col);	
     }
+    dotSpots = [3,9,15]
+    for (var i=0; i<3; i++ ){
+	for (var j=0; j<3; j++){
+	    var dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+	    dot.setAttribute('cx', dotSpots[i]*winc + 1);
+	    dot.setAttribute('cy', dotSpots[j]*hinc + 1);
+	    dot.setAttribute('fill', 'black');
+	    dot.setAttribute('r', 6);
+	    grid[0].appendChild(dot);
+	}
+    }
 }
 
 function setupInput(){
