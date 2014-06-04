@@ -131,8 +131,56 @@ io.on('connection', function(socket){
     });
 });
 
+function inArray(array, value) {
+  return array.indexOf(value) > -1;
+}
+
 function gameWon(status){
-    return false
+    var b = status['black']
+    var w = status['white']
+    if (! b.length){
+	return false;//if there haven't been any moves
+    }
+    
+    var last;
+    var stones;
+    var color;
+    if (b.length <= w.length){
+	color = 'white';
+	last = w[w.length-1];
+	stones = w.slice(0);
+    } else {
+	color = 'black';
+	last = b[b.length-1];
+	stones = b.slice(0);
+    }
+    for (var i in stones){
+	stones[i] = JSON.stringify(stones[i]);
+    }
+    
+    var dirs = [{x:0, y:1}, {x:1, y:0}, {x:1, y:1}, {x:-1,y:1}]
+    var longest = 1;
+    for (var i in dirs){
+	var len = 1;
+	for (var sign = -1; sign <= 1; sign+=2){
+	    for (var j = 1 ;; j++){
+		var loc = {x: last.x + sign*j*dirs[i].x, y: last.y + sign*j*dirs[i].y}
+		var placed = inArray(stones, JSON.stringify(loc))
+		if (!placed){
+		    len += j - 1;
+		    break;
+		}
+	    }
+	}
+	if (len > longest){
+	    longest = len;
+	}
+    }
+    if (longest >= 5){
+	return color;
+    } else {
+	return false;
+    }
 }
 
 var port = Number(process.env.PORT || 8888);
